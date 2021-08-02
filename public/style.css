@@ -1,0 +1,32 @@
+header, footer {
+  background-color: yellow; /* example */
+  text-align: center;
+}
+
+section {
+  display: flex;
+}
+
+.container {
+  width: 50%;
+}
+
+.container > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#phobias {
+  margin: 1.75rem 1rem 1rem 0;
+  background-color: yellow; /* example */
+}
+
+#fear-btn {
+  margin-top: 1rem;
+}
+
+.dropdown {
+  display: block;
+  margin-top: 1.5rem;
+}
