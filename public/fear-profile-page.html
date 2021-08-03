@@ -32,6 +32,7 @@
         <ul>
           <li>In the button below it gives you a 50/50 chance on your phobia to be cute or scary to help conquer your fear!</li>
         </ul>
+        <button id="modal-btn">Modal</button>        
         <button id="fear-btn" class="button">Generate Fear</button>
         
         <div class="dropdown">
@@ -67,16 +68,32 @@
       </div>
     </section>
     
+    <div class="modal">
+      <div class="modal-background">
+      </div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">How many images?</p>
+        </header>
+        <section class="modal-card-body">
+          <h1 class="title is-5">Choose how many images of your fear to display</h1>
+          <input type="number" min="0" max="10" value="1">
+        </section>
+        <footer class="modal-card-foot">
+          <button id="close-modal" class="button is-success">Save changes</button>
+        </footer>
+      </div>
+    </div>
     
-      <footer>
-        <div class="content has-text-centered has-text-black ">
-          <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-          </p>
-        </div>
-      </footer>
+    <footer>
+      <div class="content has-text-centered has-text-black ">
+        <p>
+          <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+      </div>
+    </footer>
     
     
     

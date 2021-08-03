@@ -83,6 +83,14 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
   });
 });
 
+document.querySelector("#close-modal").addEventListener('click', e => {
+  document.querySelector(".modal").classList.remove("is-active");
+});
+
+document.querySelector("#modal-btn").addEventListener('click', e => {
+  document.querySelector(".modal").classList.add("is-active");
+});
+
 function setFearDb(val) {
   firebase.database().ref(`users/${googleUserId}`).set({
     fear: val
