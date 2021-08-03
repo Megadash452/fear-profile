@@ -7,6 +7,11 @@
     <link rel="icon" href="https://glitch.com/favicon.ico" />
     <title>Fear Profile</title>
     
+    <script defer src="/__/firebase/8.3.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -14,28 +19,25 @@
 
     <!-- Import the webpage's javascript file -->
     <script defer src="/script.js"></script>
-    <script defer src="/fearProfile.js"></script>
   </head>
   
   <body>
     <header>
-      <h2 class="title is-2">Welcome to the Fear Profile!</h2>
+      <h2 class="title is-2 has-text-centered">Welcome to the Fear Profile!</h2>
     </header>
     
-    <section id="main" class="section">
-      <div class="container">
-        <h1 class="title">Take the Chance to tackle your fear!</h1>
+    <section id="main" class="hero is-fullheight">
+      <div class="container has-text-centered">
+        <h1 class="title has-text-centered">Take the Chance to tackle your fear!</h1>
         <ul>
           <li>In the button below it gives you a 50/50 chance on your phobia to be cute or scary to help conquer your fear!</li>
         </ul>
-        <button id="fear-btn" class="button is-warning">Generate Fear</button>
+        <button id="fear-btn" class="button">Generate Fear</button>
         
-
         <div class="dropdown">
-          Select your Phobia
           <div class="dropdown-trigger">
-            <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu">
-              <span>Please Phobia Here ˇ</span>
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span id="fear">Please Phobia Here ˇ</span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i> <!-- ADD DROPDOWN ICON -->
               </span>
@@ -43,10 +45,18 @@
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a href="#" class="dropdown-item">Heights</a>
-              <a href="#" class="dropdown-item">Spiders</a>
-              <a href="#" class="dropdown-item">Clowns</a>
-              <a href="#" class="dropdown-item">Crowds</a>
+              <a href="#" class="dropdown-item">
+                Heights
+              </a>
+              <a href="#" class="dropdown-item">
+                Spiders
+              </a>
+              <a href="#" class="dropdown-item">
+                Clowns
+              </a>
+              <a href="#" class="dropdown-item">
+                Crowds
+              </a>
             </div>
           </div>
         </div>
@@ -57,19 +67,18 @@
       </div>
     </section>
     
-    <section>
-    </section>
     
-    
-    <footer>
-      <div class="content has-text-centered has-text-black ">
+      <footer>
+        <div class="content has-text-centered has-text-black ">
           <p>
             <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
             is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
           </p>
-      </div>
-    </footer>
+        </div>
+      </footer>
+    
+    
     
   </body>
 </html>
