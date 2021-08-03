@@ -1,6 +1,7 @@
 const fearDropdown = document.querySelector(".dropdown");
 const fearDropdownBtn = document.querySelector(".dropdown-trigger");
 const fear = document.querySelector("#fear");
+const fearImg = document.querySelector("#fear-img");
 
 let googleUserId;
 
@@ -33,6 +34,38 @@ function getFear(uid) {
   });
 }
 
+document.querySelector("#fear-btn").addEventListener('click', e => {
+  let myKey = "06qB4LQYg6mmyGufbjVkBL8Z8uimWUVY";
+  let topic;
+
+  let num = getRandom(2); // 50/50
+  if (num == 0) {
+    topic = "scary " + fear.innerText;
+  } else {
+    topic = "cute " + fear.innerText;
+  }
+  
+  let query = `https://api.giphy.com/v1/gifs/search?api_key=${myKey}&q=${topic}`;
+  
+  fetch(query)
+    .then(response => response.json())
+    .then(json => {
+      let gif = json.data[getRandom(json.data.length)];
+      fearImg.setAttribute('src', gif.images.original.url);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+
+function getRandom(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+
+
+
 document.querySelectorAll(".dropdown").forEach(dropdown => {
   dropdown.addEventListener('click', e => {
     if (dropdown.classList.contains("is-active")) {
@@ -55,11 +88,3 @@ function setFearDb(val) {
     fear: val
   });
 }
-
-
-
-document.querySelector("#fear-btn").addEventListener('click', e => {
-  console.log("generating fear", fear.innerText);
-    
-
-});
