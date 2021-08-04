@@ -26,14 +26,14 @@
       <h2 class="title is-2 has-text-centered">Welcome to the Fear Profile!</h2>
     </header>
     
-    <section id="main" class="hero is-fullheight">
+    <section id="main" class="hero is-fullheight is-link">
       <div class="container has-text-centered">
         <h1 class="title has-text-centered">Take the Chance to tackle your fear!</h1>
         <ul>
           <li>In the button below it gives you a 50/50 chance on your phobia to be cute or scary to help conquer your fear!</li>
         </ul>
-        <button id="modal-btn">Modal</button>        
-        <button id="fear-btn" class="button">Generate Fear</button>
+        <button id="modal-btn" class="button is-medium is-info">Number of Images</button>        
+        <button id="fear-btn" class="button is-medium is-danger">Generate Fear</button>
         
         <div class="dropdown">
           <div class="dropdown-trigger">
@@ -47,24 +47,30 @@
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
               <a href="#" class="dropdown-item">
-                Heights
+                Acrophobia
               </a>
               <a href="#" class="dropdown-item">
-                Spiders
+                Arachnophobia
               </a>
               <a href="#" class="dropdown-item">
-                Clowns
+                Coulrophobia
               </a>
               <a href="#" class="dropdown-item">
-                Crowds
+                Enochlophobia
+              </a>
+              <a href="#" class="dropdown-item">
+                Aerophobia
+              </a>
+              <a href="#" class="dropdown-item">
+                Purinsumphobia
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="container">
-        <img id="fear-img" src="http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg" alt="your fear">
+      <div class="container" id="images">
+        <!-- <img id="fear-img" src="http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg" alt="your fear"> -->
       </div>
     </section>
     
@@ -77,7 +83,7 @@
         </header>
         <section class="modal-card-body">
           <h1 class="title is-5">Choose how many images of your fear to display</h1>
-          <input type="number" min="0" max="10" value="1">
+          <input type="number" min="0" max="10" value="1" id="num-of-imgs">
         </section>
         <footer class="modal-card-foot">
           <button id="close-modal" class="button is-success">Save changes</button>

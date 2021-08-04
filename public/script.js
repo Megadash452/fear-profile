@@ -1,7 +1,8 @@
 const fearDropdown = document.querySelector(".dropdown");
 const fearDropdownBtn = document.querySelector(".dropdown-trigger");
 const fear = document.querySelector("#fear");
-const fearImg = document.querySelector("#fear-img");
+const imgDiv = document.querySelector("#images")
+// const fearImg = document.querySelector("#fear-img");
 
 let googleUserId;
 
@@ -40,18 +41,32 @@ document.querySelector("#fear-btn").addEventListener('click', e => {
 
   let num = getRandom(2); // 50/50
   if (num == 0) {
-    topic = "scary " + fear.innerText;
+    topic = fear.innerText;
   } else {
-    topic = "cute " + fear.innerText;
+    topic = fear.innerText;
   }
+  console.log(topic);
   
   let query = `https://api.giphy.com/v1/gifs/search?api_key=${myKey}&q=${topic}`;
   
   fetch(query)
     .then(response => response.json())
     .then(json => {
-      let gif = json.data[getRandom(json.data.length)];
-      fearImg.setAttribute('src', gif.images.original.url);
+      let html = "";
+      let max = parseInt(document.querySelector("#num-of-imgs").value);
+      console.log(max);
+
+      try {      
+        for (let i = 0; i < max; i++)
+          html += `<img src="${json.data[i].images.original.url}"></img>`;
+
+        imgDiv.innerHTML = html;
+      } catch {
+        console.log("NO IMAGES FOUND")
+        imgDiv.innerHTML = "";
+      }
+      // let gif = json.data[getRandom(json.data.length)];
+      // fearImg.setAttribute('src', gif.images.original.url);
     })
     .catch(error => {
       console.log(error);
