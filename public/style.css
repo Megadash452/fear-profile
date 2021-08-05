@@ -33,18 +33,37 @@ footer {
 .dropdown {
   display: block;
   margin-top: 1.5rem;
+  margin: 0;
+  width: 161px;
+}
+.dropdown button {
+    margin-top: 0;
+}
+
+#custom-fear {
+    width: 12rem;
+}
+
+.fear-inputs {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 #images {
     display: flex;
     margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.75rem;
     width: 100%;
     flex-wrap: wrap;    
 }
 
-div.container {
+div.container.has-text-centered {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    max-height: 15rem;
 }
 
 button {
@@ -53,9 +72,7 @@ button {
     margin-right: 1rem;
 }
 
-.dropdown {
-    width: 161px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#num-of-imgs {
+    font-size: 24px;
+    text-align: center;
 }

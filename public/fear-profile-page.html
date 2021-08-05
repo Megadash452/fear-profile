@@ -35,39 +35,46 @@
         <button id="modal-btn" class="button is-medium is-info">Number of Images</button>        
         <button id="fear-btn" class="button is-medium is-danger">Generate Fear</button>
         
-        <div class="dropdown">
-          <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-              <span id="fear">Please Phobia Here ˇ</span>
-              <span class="icon is-small">
-                <i class="fas fa-angle-down" aria-hidden="true"></i> <!-- ADD DROPDOWN ICON -->
-              </span>
-            </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content">
-              <a href="#" class="dropdown-item">
-                Acrophobia
-              </a>
-              <a href="#" class="dropdown-item">
-                Arachnophobia
-              </a>
-              <a href="#" class="dropdown-item">
-                Coulrophobia
-              </a>
-              <a href="#" class="dropdown-item">
-                Enochlophobia
-              </a>
-              <a href="#" class="dropdown-item">
-                Aerophobia
-              </a>
-              <a href="#" class="dropdown-item">
-                Purinsumphobia
-              </a>
+        <div class="fear-inputs">
+          <input id="custom-fear" class="input" type="text" placeholder="Enter a custom fear">
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span id="fear">Please Phobia Here ˇ</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i> <!-- ADD DROPDOWN ICON -->
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  <strong>Use Custom Fear</strong>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <!-- Acrophobia --> Heights
+                </a>
+                <a href="#" class="dropdown-item">
+                  <!-- Arachnophobia --> Spiders
+                </a>
+                <a href="#" class="dropdown-item">
+                  <!-- Coulrophobia --> Clowns
+                </a>
+                <a href="#" class="dropdown-item">
+                  <!-- Enochlophobia --> Crowds
+                </a>
+                <a href="#" class="dropdown-item">
+                  <!-- Aerophobia --> Flying
+                </a>
+                <a href="#" class="dropdown-item">
+                  <!-- Purinsumphobia --> Trash Cans
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+        
 
       <div class="container" id="images">
         <!-- <img id="fear-img" src="http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg" alt="your fear"> -->
@@ -98,6 +105,7 @@
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
           is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
         </p>
+        <h3>POWERED BY GIPHY</h3>
       </div>
     </footer>
     

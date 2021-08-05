@@ -1,10 +1,13 @@
 const fearDropdown = document.querySelector(".dropdown");
 const fearDropdownBtn = document.querySelector(".dropdown-trigger");
-const fear = document.querySelector("#fear");
-const imgDiv = document.querySelector("#images")
+const fearEl = document.querySelector("#fear");
+const imgDiv = document.querySelector("#images");
+const customFear = document.querySelector("#custom-fear");
+const imgCounter = document.querySelector("#num-of-imgs");
 // const fearImg = document.querySelector("#fear-img");
 
 let googleUserId;
+const giphyKey = "06qB4LQYg6mmyGufbjVkBL8Z8uimWUVY"
 
 window.onload = (event) => {
   // Use this to retain user state between html pages.
@@ -27,47 +30,35 @@ function getFear(uid) {
     data = snapshot.val();
 
     if (!data) {
-      setFearDb(fear.innerText);
+      setFearDb(fearEl.innerText);
     } else {
       console.log(snapshot.val());
-      fear.innerText = snapshot.val()['fear'];
+      fearEl.innerText = snapshot.val()['fear'];
     }
   });
 }
 
 document.querySelector("#fear-btn").addEventListener('click', e => {
-  let myKey = "06qB4LQYg6mmyGufbjVkBL8Z8uimWUVY";
   let topic;
+  let fear;
 
-  let num = getRandom(2); // 50/50
-  if (num == 0) {
-    topic = fear.innerText;
-  } else {
-    topic = fear.innerText;
-  }
+  if (fearEl.innerText == "Use Custom Fear")
+    fear = "fear of " + customFear.value;
+  else
+    fear = "fear of " + fearEl.innerText;
+
+  let randNum = getRandom(2); // 50/50
+  if (randNum)
+    topic = "scary " + fear; // scary
+  else
+    topic = "cute " + fear; // cute
+
   console.log(topic);
   
-  let query = `https://api.giphy.com/v1/gifs/search?api_key=${myKey}&q=${topic}`;
-  
+  let query = `https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${topic}`;
   fetch(query)
     .then(response => response.json())
-    .then(json => {
-      let html = "";
-      let max = parseInt(document.querySelector("#num-of-imgs").value);
-      console.log(max);
-
-      try {      
-        for (let i = 0; i < max; i++)
-          html += `<img src="${json.data[i].images.original.url}"></img>`;
-
-        imgDiv.innerHTML = html;
-      } catch {
-        console.log("NO IMAGES FOUND")
-        imgDiv.innerHTML = "";
-      }
-      // let gif = json.data[getRandom(json.data.length)];
-      // fearImg.setAttribute('src', gif.images.original.url);
-    })
+    .then(renderGifs)
     .catch(error => {
       console.log(error);
     });
@@ -79,15 +70,42 @@ function getRandom(max) {
 }
 
 
+function renderGifs(json) {
+  let html = "";
+  let numGifs = parseInt(imgCounter.value);
+
+  if (numGifs == 0) {
+    alert("You have made a terrible mistake");
+    imgCounter.value = 10;
+    console.log("jumpscare");
+    
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${fearEl.innerText} jumpscare`)
+      .then(response => response.json())
+      .then(renderGifs)
+      .catch(error => {
+        console.log(error);
+      });
+    return;
+  }
+
+  try {      
+    for (let i = 0; i < numGifs; i++)
+      html += `<img src="${json.data[i].images.original.url}"></img>`;
+
+    imgDiv.innerHTML = html;
+  } catch {
+    console.log("NO IMAGES FOUND")
+    imgDiv.innerHTML = "";
+  }
+}
 
 
 document.querySelectorAll(".dropdown").forEach(dropdown => {
   dropdown.addEventListener('click', e => {
-    if (dropdown.classList.contains("is-active")) {
+    if (dropdown.classList.contains("is-active"))
       dropdown.classList.remove("is-active");
-    } else {
-      dropdown.classList.add("is-active")
-    }
+    else
+      dropdown.classList.add("is-active");
   });
 });
 
@@ -96,6 +114,17 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
     fearDropdown.querySelector("button > span").innerText = item.innerText;
     setFearDb(item.innerText)
   });
+});
+
+imgCounter.addEventListener('change', e=> {
+  let val = parseInt(imgCounter.value);
+  let min = parseInt(imgCounter.getAttribute("min"));
+  let max = parseInt(imgCounter.getAttribute("max"));
+
+  if (val < min)
+    imgCounter.value = min;
+  else if (val > max)
+    imgCounter.value = max;
 });
 
 document.querySelector("#close-modal").addEventListener('click', e => {
